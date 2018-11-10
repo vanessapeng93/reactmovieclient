@@ -24,6 +24,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "proxy": "https://fast-ocean-16315.herokuapp.com"
+  ]
 }

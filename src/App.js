@@ -23,9 +23,7 @@ class App extends Component {
     this.state = {
       alertVisible: false,
       title: '',
-      movies: [
-        { poster: '', title: 'hello world', year: '2018', plot: 'Paul plot' }
-      ]
+      movies: []
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -39,10 +37,9 @@ class App extends Component {
 
   getAllMovies = () => {
     axios
-      .get('/getallmovies')
+      .get('https://fast-ocean-16315.herokuapp.com/getallmovies')
       .then(result => {
         this.setState({ movies: result.data });
-        console.log(this.state.movies);
       })
       .catch(error => {
         console.log(error);
@@ -57,9 +54,10 @@ class App extends Component {
   onSubmit = e => {
     e.preventDefault();
     this.setState({ alertVisible: false });
-    //console.log(this.state.title);
 
-    const query = `/getmovie?title=${this.state.title}`;
+    const query = `https://fast-ocean-16315.herokuapp.com/getmovie?title=${
+      this.state.title
+    }`;
 
     console.log(query);
 
@@ -90,7 +88,7 @@ class App extends Component {
         if (movie.title !== title) return movie;
       })
     });
-    const query = `/deletemovie?title=${title}`;
+    const query = `https://fast-ocean-16315.herokuapp.com/deletemovie?title=${title}`;
     axios
       .get(query)
       .then(result => {
@@ -102,10 +100,17 @@ class App extends Component {
   }
 
   render() {
+    let movieCards = this.state.movies.map(movie => {
+      return (
+        <Col sm="4" key={movie.title}>
+          <MovieCard removeMovie={this.removeMovie.bind(this)} movie={movie} />
+        </Col>
+      );
+    });
     return (
       <div className="App">
         <Container>
-          <Jumbotron>
+          <Jumbotron id="jumboheader">
             <h1 className="display-4">Movie Search</h1>
             <p className="lead">Search for movies</p>
           </Jumbotron>
@@ -138,14 +143,7 @@ class App extends Component {
             </Col>
           </Row>
           <p />
-          <Row>
-            <Col sm="4" key={this.state.movies[0].title}>
-              <MovieCard
-                removeMovie={this.removeMovie.bind(this)}
-                movie={this.state.movies[0]}
-              />
-            </Col>
-          </Row>
+          <Row>{movieCards}</Row>
         </Container>
       </div>
     );

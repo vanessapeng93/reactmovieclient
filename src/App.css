@@ -31,11 +31,7 @@
   }
 }
 
-.header {
-  background-color: rgb(159, 187, 247);
-}
-
-.jumbotron {
+#jumboheader {
   height: 250px;
-  background-color: rgb(236, 134, 240);
+  background-color: #4fc3f7;
 }
