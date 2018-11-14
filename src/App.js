@@ -37,7 +37,7 @@ class App extends Component {
 
   getAllMovies = () => {
     axios
-      .get('https://fast-ocean-16315.herokuapp.com/getallmovies')
+      .get('https://floating-peak-25841.herokuapp.com/getallmovies')
       .then(result => {
         this.setState({ movies: result.data });
       })
@@ -55,7 +55,7 @@ class App extends Component {
     e.preventDefault();
     this.setState({ alertVisible: false });
 
-    const query = `https://fast-ocean-16315.herokuapp.com/getmovie?title=${
+    const query = `https://floating-peak-25841.herokuapp.com/getmovie?title=${
       this.state.title
     }`;
 
@@ -88,7 +88,7 @@ class App extends Component {
         if (movie.title !== title) return movie;
       })
     });
-    const query = `https://fast-ocean-16315.herokuapp.com/deletemovie?title=${title}`;
+    const query = `https://floating-peak-25841.herokuapp.com/deletemovie?title=${title}`;
     axios
       .get(query)
       .then(result => {
