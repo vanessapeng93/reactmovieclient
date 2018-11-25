@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import MovieCard from './MovieCard';
 import axios from 'axios';
+import Carousal from './Carousal';
 
 import {
   Jumbotron,
@@ -102,7 +103,7 @@ class App extends Component {
   render() {
     let movieCards = this.state.movies.map(movie => {
       return (
-        <Col sm="4" key={movie.title}>
+        <Col sm="3" key={movie.title}>
           <MovieCard removeMovie={this.removeMovie.bind(this)} movie={movie} />
         </Col>
       );
@@ -110,10 +111,16 @@ class App extends Component {
     return (
       <div className="App">
         <Container>
-          <Jumbotron id="jumboheader">
-            <h1 className="display-4">Movie Search</h1>
-            <p className="lead">Search for movies</p>
-          </Jumbotron>
+          <h1
+            style={{
+              padding: '20px',
+              color:
+                '-webkit-linear-gradient(to right, #0f0c29, #302b63, #24243e)'
+            }}
+          >
+            <i>New Movie Showing</i>
+          </h1>
+          <Carousal id="jumboheader" />
           <Row>
             <Col>
               <Alert
@@ -138,7 +145,10 @@ class App extends Component {
                     onChange={this.onChange}
                   />
                 </FormGroup>
-                <Button color="primary">Submit</Button>
+                <button type="submit" class="btn btn-info">
+                  <i class="fa fa-database" />
+                  Submit
+                </button>
               </Form>
             </Col>
           </Row>
