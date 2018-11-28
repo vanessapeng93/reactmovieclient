@@ -53,12 +53,12 @@ export class MovieCard extends Component {
           toggle={this.toggle}
           className={this.props.className}
         >
-          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+          <ModalHeader toggle={this.toggle}>{title}</ModalHeader>
           <ModalBody>
             <div class="row">
               <Col sm="6">
                 <img
-                  style={{ marginRight: '10px' }}
+                  style={{ marginRight: '20px' }}
                   width="250px"
                   height="300px"
                   src={poster}

@@ -114,11 +114,12 @@ class App extends Component {
           <h1
             style={{
               padding: '20px',
-              color:
-                '-webkit-linear-gradient(to right, #0f0c29, #302b63, #24243e)'
+              color: '#f9f9f9'
             }}
           >
-            <i>New Movie Showing</i>
+            <strong>
+              <i>New Movie Showing</i>
+            </strong>
           </h1>
           <Carousal id="jumboheader" />
           <Row>
@@ -136,18 +137,32 @@ class App extends Component {
             <Col>
               <Form onSubmit={this.onSubmit}>
                 <FormGroup>
-                  <Label for="title">Enter movie title</Label>
+                  <Label
+                    for="title"
+                    style={{
+                      color: '#f9f9f9',
+                      fontSize: '40px',
+                      fontFamily: 'Arial, Helvetica, sans-serif;'
+                    }}
+                  >
+                    <strong>
+                      <i>Enter movie title</i>
+                    </strong>
+                  </Label>
                   <Input
                     type="text"
                     name="title"
                     id="title"
-                    placeholder="enter movie title..."
+                    placeholder="Enter movie title..."
                     onChange={this.onChange}
+                    style={{
+                      fontSize: '20px',
+                      fontFamily: 'Arial, Helvetica, sans-serif;'
+                    }}
                   />
                 </FormGroup>
                 <button type="submit" class="btn btn-info">
-                  <i class="fa fa-database" />
-                  Submit
+                  Add movie
                 </button>
               </Form>
             </Col>
